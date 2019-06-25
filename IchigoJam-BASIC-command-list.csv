@@ -1,5 +1,5 @@
 ﻿rdf:type,schema:identifier,schema:name,https://sabae.cc/#format,schema:name@ja-Kana,schema:description@ja,schema:alternateName,https://sabae.cc/#example
-schema:DefiedTerm,1,LED,LED 数,エルイーディー,数が1ならLEDが光り、0なら消える,,LED 1
+schema:DefiedTerm,1,LED,LED 数,エル・イー・ディー,数が1ならLEDが光り、0なら消える,,LED 1
 schema:DefiedTerm,2,WAIT,"WAIT 数1{,数2}",ウェイト,数1の数値フレーム分待つ 60で約１秒、省略可の数2指定で低電力化、数1のマイナス指定で走査線分で待つ(-261でWAIT1と同等),,WAIT 60
 schema:DefiedTerm,3,:,:,コロン,コマンドを連結する,,WAIT 60:LED 1
 schema:DefiedTerm,4,1,行番号 {コマンド},,1. 数は-32768から32767まで表記できる。 2. 行頭の1〜32767で指定された数は行番号として、コマンドと合わせて記録する。コマンドを省略するとその行を削除（16385以上は指定しないと表示しない）,,10 LED1
@@ -13,10 +13,10 @@ schema:DefiedTerm,11,ELSE,IF 数 {THEN} コマンド1 {ELSE コマンド2},エ�
 schema:DefiedTerm,12,BTN,BTN({数}),ボタン,ボタンが押されていれば1、そうでないとき0を返す（数：0(付属ボタン)/UP/DOWN/RIGHT/LEFT/SPACE、省略で0）,,LED BTN()
 schema:DefiedTerm,13,NEW,NEW,ニュー,プログラムを全部消す,,NEW
 schema:DefiedTerm,14,PRINT,PRINT {数や文字列},プリント,"数や文字列を表示する （文字列は""で囲む、"";"" で連結できる）",?,"PRINT ""HI!"";15"
-schema:DefiedTerm,15,?,? {数や文字列},プリント,"数や文字列を表示する （文字列は""で囲む、"";"" で連結できる）",PRINT,"?""HI!"";15"
+schema:DefiedTerm,15,?,? {数や文字列},クエスション,"数や文字列を表示する （文字列は""で囲む、"";"" で連結できる）",PRINT,"?""HI!"";15"
 schema:DefiedTerm,16,LOCATE,"LOCATE 数1,数2{,数3}",ロケート,"次に文字を書く位置を横、縦の順に指定する（左上が0,0、縦=-1で無表示）。数3が0でなければ指定した場所にカーソルを表示する。",LC,"LOCATE 3,3"
 schema:DefiedTerm,17,LC,"LC 数1,数2{,数3}",ロケート,"次に文字を書く位置を横、縦の順に指定する（左上が0,0、縦=-1で無表示）。数3が0でなければ指定した場所にカーソルを表示する。",LOCATE,"LC 3,3"
-schema:DefiedTerm,18,CLS,CLS,クリア スクリーン,画面を全部消す,,CLS
+schema:DefiedTerm,18,CLS,CLS,クリア・スクリーン,画面を全部消す,,CLS
 schema:DefiedTerm,19,RND,RND(数),ランダム,0から数未満のでたらめな整数を返す,,PRINT RND(6)
 schema:DefiedTerm,20,SAVE,SAVE {数},セーブ,プログラムを保存する（0〜3の4つ、100-227 外付けEEPROM、省略で前回使用した数） ボタンを押した状態で起動すると0番を読み込み自動実行,,SAVE 1
 schema:DefiedTerm,21,LOAD,LOAD {数},ロード,プログラムを読み出す（0〜3の4つ、100-227 外付けEEPROM、省略で前回使用した数）,,LOAD
@@ -34,7 +34,7 @@ schema:DefiedTerm,32,LET,"LET 変数,数",レット,"数をアルファベット
 schema:DefiedTerm,33,=,変数=数,イコール,1. 数をアルファベット１文字の変数や配列の値として記憶する。 2. 式として使うと==と同じ機能となる,LET,A=1
 schema:DefiedTerm,34,INPUT,"INPUT {文字列,}変数",インプット,キーボードやUARTからの入力で数値を変数にいれる（文字列とコンマは省略可）,,"INPUT ""ANS?"",A"
 schema:DefiedTerm,35,TICK,TICK(),ティック,CLTからの時間を返す（1/60秒で1進む）,,PRINT TICK()
-schema:DefiedTerm,36,CLT,CLT,クリア ティック,TICK()のカウントをリセットする,,CLT
+schema:DefiedTerm,36,CLT,CLT,クリア・ティック,TICK()のカウントをリセットする,,CLT
 schema:DefiedTerm,37,INKEY,INKEY(),インキー,キーボードやUARTから１文字入力する（入力がない時は0、UARTから0が入力された時は#100）,,PRINT INKEY()
 schema:DefiedTerm,38,LEFT,LEFT,レフト,28を返す。INKEYのキーコードの判定や、SCROLLに使う,,IF INKEY()=LEFT LED1
 schema:DefiedTerm,39,RIGHT,RIGHT,ライト,29を返す。INKEYのキーコードの判定や、SCROLLに使う,,IF INKEY()=RIGHT LED1
@@ -47,7 +47,7 @@ schema:DefiedTerm,45,SCROLL,SCROLL 数,スクロール,指定した方向に1キ
 schema:DefiedTerm,46,SCR,"SCR({数,数})",スクリーン,画面上の指定した位置に書かれた文字コードを返す（指定なしで現在位置）,VPEEK,"PRINT SCR(0,0)"
 schema:DefiedTerm,47,VPEEK,"VPEEK({数,数})",ブイピーク,画面上の指定した位置に書かれた文字コードを返す（指定なしで現在位置）,SCR,"PRINT VPEEK(0,0)"
 schema:DefiedTerm,48,==,数 == 数,イコール・イコール,比較して等しい時に1、それ以外で0を返す。,=,IF A==B LED 1
-schema:DefiedTerm,49,!=,数 != 数,ノット・イコール・トゥー,比較して等しくない時に1、それ以外で0を返す,<>,IF A<>B LED 1
+schema:DefiedTerm,49,!=,数 != 数,ノット・イコール・トゥー,比較して等しくない時に1、それ以外で0を返す,<>,IF A!=B LED 1
 schema:DefiedTerm,50,<>,数 <> 数,レス・アンド・グレーター・ザン,比較して等しくない時に1、それ以外で0を返す,!=,IF A<>B LED 1
 schema:DefiedTerm,51,<=,数 <= 数,レス・ザン・オア・イコール・トゥー,比較して以下の時に1、それ以外で0を返す,,IF A<=B LED 1
 schema:DefiedTerm,52,<,数 < 数,レス・ザン,比較して未満の時に1、それ以外で0を返す,,IF A<B LED 1
@@ -72,10 +72,10 @@ schema:DefiedTerm,70,OUT,"OUT 数1{,数2}",アウト,外部出力OUT1-11に0ま�
 schema:DefiedTerm,71,IN,IN({数}),イン,"IN0-10から入力する（0または1） 数を省略してまとめて入力できる （IN0,1,4,9はプルアップ、IN5-8,10-11はOUTで切り替え時使用可能、IN0,9はボタン）",,"LET A,IN(1)"
 schema:DefiedTerm,72,ANA,ANA({数}),アナログ,"外部入力の電圧(0V-3.3V)を0-1023の数値で返す(2:IN2、5-8:IN5-8(OUT1-4)、0,9:BTN、省略で0)",,?ANA()
 schema:DefiedTerm,73,PWM,"PWM 数1,数2{,数3}",ピー・ダブリュー・エム,外部出力OUT2-5に数2で0.01msec単位で指定するパルスを出力する（0-2000、周期20msec）、数3で周期を指定（省略時2000=20msec、マイナス値指定で周期1/480）,,"PWM 2,100"
-schema:DefiedTerm,74,CLV,CLV,クリア ・バリアブル,変数、配列を全部0にする,CLEAR,CLV
+schema:DefiedTerm,74,CLV,CLV,クリア・バリアブル,変数、配列を全部0にする,CLEAR,CLV
 schema:DefiedTerm,75,CLEAR,CLEAR,クリア,変数、配列を全部0にする,CLV,CLEAR
 schema:DefiedTerm,76,CLK,CLK,クリア・キー,キーバッファとキーの状態をクリアする,,CLK
-schema:DefiedTerm,77,CLO,CLO,クリア・ アウトプット,入出力ピンを初期状態に戻す,,CLO
+schema:DefiedTerm,77,CLO,CLO,クリア・アウトプット,入出力ピンを初期状態に戻す,,CLO
 schema:DefiedTerm,78,ABS,ABS(数),アブソリュート,絶対値を返す（マイナスはプラスになる）,,?ABS(-2)
 schema:DefiedTerm,79,[],[数],アレイ,"配列（[0]から[101]までの102コの連続した変数として使える） LET[0],1,2,3で連続代入可能",,[3]=1
 schema:DefiedTerm,80,GOSUB,GOSUB 行番号,ゴーサブ,戻り先をスタックに積み、数または式で指定した行番号に飛ぶ（ネストは30段まで）,GSB,GOSUB 100
@@ -109,7 +109,7 @@ schema:DefiedTerm,107,HELP,HELP,ヘルプ,メモリマップを表示する,,HEL
 schema:DefiedTerm,108,PEEK,PEEK(数),ピーク,メモリ読み出し（キャラクターパターン0-#7FFなど）,,?PEEK(#700)
 schema:DefiedTerm,109,POKE,"POKE 数,数",ポーク,"メモリへの書き込み（連続書き込み可能 POKE#700,1,2,3）",,"POKE #700,#FF"
 schema:DefiedTerm,110,COPY,"COPY 数1,数2,数3",コピー,メモリコピー 数1のアドレスへ数2のアドレスから数3の長さ分コピー(数3マイナスでコピー方向が逆になる),,"COPY #900,0,256"
-schema:DefiedTerm,111,CLP,CLP,クリア・ パターン,キャラクターパターン(#700-#7FF)を初期化する,,CLP
+schema:DefiedTerm,111,CLP,CLP,クリア・パターン,キャラクターパターン(#700-#7FF)を初期化する,,CLP
 schema:DefiedTerm,112,"""","""文字列""",ダブルクォート,文字列の先頭アドレスを返す,,"A=""ABC"""
 schema:DefiedTerm,113,STR,"STR$(数1{,数2})",ストリング,文字列を返す（数2(省略可)で長さ指定）,,PRINT STR$(A)
 schema:DefiedTerm,114,LEN,"LEN(""文字列"")",レングス,文字列の長さを返す,,"PRINT LEN(""ABC"")"

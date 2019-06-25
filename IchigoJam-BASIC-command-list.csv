@@ -66,7 +66,7 @@ schema:DefiedTerm,64,TO,FOR 変数=数1 TO 数2 {STEP 数3}:コマンド:NEXT,�
 schema:DefiedTerm,65,STEP,FOR 変数=数1 TO 数2 STEP 数3:コマンド:NEXT,ステップ,変数に数1をいれ、数2になるまで数3ずつ増やしながらNEXTまでをくりかえす （STEPは省略可、6段まで）,,FOR I=0 TO 10:?I:NEXT
 schema:DefiedTerm,66,NEXT,FOR 変数=数1 TO 数2 {STEP 数3}:コマンド:NEXT,ネクスト,変数に数1をいれ、数2になるまで数3ずつ増やしながらNEXTまでをくりかえす （STEPは省略可、6段まで）,,FOR I=0 TO 10:?I:NEXT
 schema:DefiedTerm,67,POS,POS({数}),ポジション,カーソル位置を返す（数、省略時または0:X+Y*幅、1:X座標、2:Y座標） *ver1.4以上,,"?POS(0),POS(1)"
-schema:DefiedTerm,68,DRAW,"DRAW 数1,数2{,数3,数4,}{数5}",ドロー,"数1,数2の座標から数3,数4の座標へ線を引く（座標は最大63x47）、数5に0指定で線を消し、2指定で反転する、省略時と1指定で線を引く *ver1.4以上",,"DRAW 1,5,10,15"
+schema:DefiedTerm,68,DRAW,"DRAW 数1,数2{,数3,数4}{,数5}",ドロー,"数1,数2の座標から数3,数4の座標へ線を引く（座標は最大63x47）、数5に0指定で線を消し、2指定で反転する、省略時と1指定で線を引く *ver1.4以上",,"DRAW 1,5,10,15"
 schema:DefiedTerm,69,POINT,"POINT(数1,数2)",ポイント,"数1,数2の座標にDRAWで描かれた点または文字があるときに1、そうでないとき0を返す *ver1.4以上",,"?POINT(1,5)"
 schema:DefiedTerm,70,OUT,"OUT 数1{,数2}",アウト,外部出力OUT1-11に0または1を出力する 数2を省略でまとめて出力できる（数2に-1指定でINへ切り替え、-2指定でプルアップ付きINへ切り替え ※IN3は除く）,,"OUT 1,1"
 schema:DefiedTerm,71,IN,IN({数}),イン,"IN0-10から入力する（0または1） 数を省略してまとめて入力できる （IN0,1,4,9はプルアップ、IN5-8,10-11はOUTで切り替え時使用可能、IN0,9はボタン）",,"LET A,IN(1)"

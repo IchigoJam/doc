@@ -8,8 +8,8 @@ schema:DefiedTerm,6,LIST,"LIST {行番号1{,行番号2}}",リスト,プログラ
 schema:DefiedTerm,7,GOTO,GOTO 行番号,ゴートゥー,指定した行番号へ飛ぶ（式も指定可能）,GOTO 10
 schema:DefiedTerm,8,END,END,エンド,プログラムを終了する,END
 schema:DefiedTerm,9,IF,IF 数 {THEN} コマンド1 {ELSE コマンド2},イフ,"数が0でなければコマンド1を実行し、0であればコマンド2を実行する （THEN,ELSE以降は省略可）",IF BTN() END
-schema:DefiedTerm,10,THEN,IF 数 {THEN} コマンド1 {ELSE コマンド2},ゼン,"数が0でなければコマンド1を実行し、0であればコマンド2を実行する （THEN,ELSE以降は省略可）",IF BTN() END
-schema:DefiedTerm,11,ELSE,IF 数 {THEN} コマンド1 ELSE コマンド2,エルス,数が0でなければコマンド1を実行し、0であればコマンド2を実行する （THENは省略可）,IF BTN() END ELSE CONT
+schema:DefiedTerm,10,THEN,IF 数 {THEN} コマンド1 {ELSE コマンド2},ゼン,"数が0でなければコマンド1を実行し、0であればコマンド2を実行する （THEN,ELSE以降は省略可）",IF BTN() THEN END
+schema:DefiedTerm,11,ELSE,IF 数 {THEN} コマンド1 {ELSE コマンド2},エルス,"数が0でなければコマンド1を実行し、0であればコマンド2を実行する （THEN,ELSE以降は省略可）",IF BTN() END ELSE CONT
 schema:DefiedTerm,12,BTN,BTN({数}),ボタン,ボタンが押されていれば1、そうでないとき0を返す（数：0(付属ボタン)/UP/DOWN/RIGHT/LEFT/SPACE、省略で0）,LED BTN()
 schema:DefiedTerm,13,NEW,NEW,ニュー,プログラムを全部消す,NEW
 schema:DefiedTerm,14,PRINT,PRINT {数や文字列},プリント,"数や文字列を表示する （文字列は""で囲む、"";"" で連結できる） 省略形：?","PRINT ""HI!"";15"

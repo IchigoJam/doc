@@ -22,7 +22,7 @@ schema:DefiedTerm,20,SAVE,SAVE {数},セーブ,プログラムを保存する（
 schema:DefiedTerm,21,LOAD,LOAD {数},ロード,プログラムを読み出す（0〜3の4つ、100-227 外付けEEPROM、省略で前回使用した数）,,LOAD
 schema:DefiedTerm,22,FILES,"FILES {数1{,数2}}",ファイルズ,数1(省略可)〜数2のプログラム一覧を表示する（EEPROM内ファイル表示に対応、0指定ですべて表示、ESCで途中停止）,,FILES
 schema:DefiedTerm,23,BEEP,"BEEP {数1{,数2}}",ビープ,単音を鳴らす 周期(0-32767)と長さ(1/60秒単位)は省略可 ※SOUND(EX2)-GNDに圧電サウンダーなどの接続が必要,,BEEP
-schema:DefiedTerm,24,PLAY,"PLAY {""MML""}",プレイ,別途解説するMMLで記述した音楽を鳴らす。MML省略で音停止 ※SOUND(EX2)-GNDに圧電サウンダーなどの接続が必要,,"PLAY ""$CDE2CDE2"""
+schema:DefiedTerm,24,PLAY,"PLAY {""MML""}",プレイ,MML、記述した音楽を鳴らす。省略で音停止 ※SOUND(EX2)-GNDに圧電サウンダーなどの接続が必要 （MML、CDEFGAB：ドレミファソラシ、R：休符、.：音や休符を1.5倍伸ばす、T120：テンポ、O4：オクターブ(1-6)、N：単音、<：オクターブ上げる、>：オクターブ下げる）,,"PLAY ""$CDE2CDE2"""
 schema:DefiedTerm,25,TEMPO,TEMPO 数,テンポ,再生中の音楽のテンポを変更する,,TEMPO 1200
 schema:DefiedTerm,26,+,数 + 数,プラス,足し算する,,PRINT 1+1
 schema:DefiedTerm,27,-,数 - 数,マイナス,1. 引き算する 2. 後に続く数をマイナスにする,,PRINT 2-1
@@ -41,7 +41,7 @@ schema:DefiedTerm,39,RIGHT,RIGHT,ライト,29を返す。INKEYのキーコード
 schema:DefiedTerm,40,UP,UP,アップ,30を返す。INKEYのキーコードの判定や、SCROLLに使う,,IF INKEY()=UP LED1
 schema:DefiedTerm,41,DOWN,DOWN,ダウン,31を返す。INKEYのキーコードの判定や、SCROLLに使う,,IF INKEY()=DOWN LED1
 schema:DefiedTerm,42,SPACE,SPACE,スペース,32を返す。INKEYのキーコードの判定や、SCROLLに使う,,IF INKEY()=SPACE LED1
-schema:DefiedTerm,43,CHR,"CHR$(数{,数2{,数3…}})",キャラ,文字コードに対応する文字を返す（コンマ区切りで連続表記可）,,PRINT CHR$(65)
+schema:DefiedTerm,43,CHR,"CHR$(数{,数2{,数3…}})",キャラ,PRINT内で、文字コードに対応する文字を返す（コンマ区切りで連続表記可）,,PRINT CHR$(65)
 schema:DefiedTerm,44,ASC,"ASC(""文字"")",アスキー,文字に対する文字コードを返す,,"PRINT ASC(""A"")"
 schema:DefiedTerm,45,SCROLL,SCROLL 数,スクロール,指定した方向に1キャラ分スクロールする（0/UP:上、1/RIGHT:右、2/DOWN:下、3/LEFT:左）,,SCROLL 2
 schema:DefiedTerm,46,SCR,"SCR({数,数})",スクリーン,画面上の指定した位置に書かれた文字コードを返す（指定なしで現在位置）,VPEEK,"PRINT SCR(0,0)"
@@ -82,11 +82,11 @@ schema:DefiedTerm,80,GOSUB,GOSUB 行番号,ゴーサブ,戻り先をスタック
 schema:DefiedTerm,81,GSB,GSB 行番号,ゴーサブ,戻り先をスタックに積み、数または式で指定した行番号に飛ぶ（ネストは30段まで）,GOSUB,GSB 100
 schema:DefiedTerm,82,RETURN,RETURN,リターン,GOSUB/GSBの呼び出し元へ戻る,RTN,RETURN
 schema:DefiedTerm,83,RTN,RTN,リターン,GOSUB/GSBの呼び出し元へ戻る,RETURN,RTN
-schema:DefiedTerm,84,DEC,"DEC$(数1{,数2})",デシ,数を文字列にする（２番目の数は桁数、省略可）,,"?DEC$(99,3)"
+schema:DefiedTerm,84,DEC,"DEC$(数1{,数2})",デシ,PRINT内で、数を文字列にする（２番目の数は桁数、省略可）,,"?DEC$(99,3)"
 schema:DefiedTerm,85,#,#16進数,ハッシュ,16進数で数を表記する,,#FF
-schema:DefiedTerm,86,HEX,"HEX$(数1{,数2})",ヘックス,数を16進数の文字列にする（２番目の数は桁数、省略可）,,"?HEX$(255,2)"
+schema:DefiedTerm,86,HEX,"HEX$(数1{,数2})",ヘックス,PRINT内で、数を16進数の文字列にする（２番目の数は桁数、省略可）,,"?HEX$(255,2)"
 schema:DefiedTerm,87,`,`2進数,バック・クォート,2進数で数を表記する,,`1010
-schema:DefiedTerm,88,BIN,"BIN$(数1{,数2})",バイナリー,数を2進数の文字列にする（２番目の数は桁数、省略可）,,"?BIN$(255,8)"
+schema:DefiedTerm,88,BIN,"BIN$(数1{,数2})",バイナリー,PRINT内で、数を2進数の文字列にする（２番目の数は桁数、省略可）,,"?BIN$(255,8)"
 schema:DefiedTerm,89,&,数 & 数,アンパサンド,論理積（ビット演算）,,?3&1
 schema:DefiedTerm,90,|,数 | 数,パイプ,論理和（ビット演算）,,?3|1
 schema:DefiedTerm,91,^,数 ^ 数,ハット,排他的論理和（ビット演算）,,?A^1
@@ -111,7 +111,7 @@ schema:DefiedTerm,109,POKE,"POKE 数,数",ポーク,"メモリへの書き込み
 schema:DefiedTerm,110,COPY,"COPY 数1,数2,数3",コピー,メモリコピー 数1のアドレスへ数2のアドレスから数3の長さ分コピー(数3マイナスでコピー方向が逆になる),,"COPY #900,0,256"
 schema:DefiedTerm,111,CLP,CLP,クリア・パターン,キャラクターパターン(#700-#7FF)を初期化する,,CLP
 schema:DefiedTerm,112,"""","""文字列""",ダブルクォート,文字列の先頭アドレスを返す,,"A=""ABC"""
-schema:DefiedTerm,113,STR,"STR$(数1{,数2})",ストリング,文字列を返す（数2(省略可)で長さ指定）,,PRINT STR$(A)
+schema:DefiedTerm,113,STR,"STR$(数1{,数2})",ストリング,PRINT内で、文字列を返す（数2(省略可)で長さ指定）,,PRINT STR$(A)
 schema:DefiedTerm,114,LEN,"LEN(""文字列"")",レングス,文字列の長さを返す,,"PRINT LEN(""ABC"")"
 schema:DefiedTerm,115,@,@ラベル,アットマーク,行の先頭に書くとラベルとなり、行番号の代わりとして使える（GOTO @LOOPなど） ※前方一致,,@LOOP
 schema:DefiedTerm,116,VIDEO,"VIDEO 数1{,数2}",ビデオ,画面表示非表示を切り替える 0で画面表示を停止し処理高速化 （F8で表示）、省略可能な数2でVIDEO0時CPUクロックを1/数2に変更し省電力化、数1が2の倍数で白黒反転、数1が3以上で拡大モード,,VIDEO 0

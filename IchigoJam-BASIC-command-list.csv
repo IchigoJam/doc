@@ -128,12 +128,3 @@ schema:DefiedTerm,124,IOT.OUT,,IoT.OUT 100,,アイ・オー・ティー・アウ
 schema:DefiedTerm,125,WS.LED,,WS.LED 3,,ダブリュー・エス・エル・イー・ディー,入出力,"WS.LED 数1{,数2}",配列の先頭から緑赤青の順に設定された値でOUT1に接続されたWS2812Bを数1の分光らせる。数2を指定するとその数だけ繰り返す。 *ver1.4以上,WS LED,I/O,"WS.LED num1{,num2}","The WS2812B connected to OUT1 lights up by num1 with values ​​set in the order of green, red, and blue from the beginning of the array. If the num2 is specified, it repeats that number. *for ver 1.4"
 schema:DefiedTerm,126,SWITCH,,SWITCH,,スイッチ,入出力,"SWITCH {数1{,数2}}",画面表示をテレビと液晶とを切り替える（数1 0:テレビ、1:液晶）、数2で液晶の濃さを指定,switch,I/O,SWITCH {num},"switch the video output, TV or LCD (0:TV 1:LCD)"
 schema:DefiedTerm,127,USR,,"A=USR(#700,0)",,ユーザー,プログラム,"USR(数1{,数2})",数1で指定されたアドレスのマシン語(Arm Cortex-M0)を数2をパラメータとして呼び出す（数2省略で0）,user,Program,"USR(address{,num})",Call the machine language (Arm Cortex-M0) of the address specified by the num1 with the num2 as a parameter (0 for num2 omitted)
-,,,,,,,,,,,,,
-,,,,,,,,,,,,,
-,,,,,,,,,,,,,
-,,,,,,,,,,,,,
-,,,,,,,,,,,,,
-,,,,,,,,,,,,,
-,,,,,,,,,,,,,
-,,,,,,,,,,,,,
-,,,,,,,,,,,,,

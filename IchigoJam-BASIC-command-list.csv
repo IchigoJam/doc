@@ -1,4 +1,3 @@
-schema:DefiedTerm,6,LIST,プログラム,,リスト,"LIST {行番号1{,行番号2}}",プログラムを表示する [F4] （行番号1で1行表示、行番号1がマイナスでその行まで表示、行番号2指定でその行まで表示、行番号2が0の時終わりまで表示、ESCで途中停止）,,"LIST 10,300"
 ﻿rdf:type,schema:identifier,schema:name,schema:alternateName,https://sabae.cc/#example,https://sabae.cc/#priority,https://sabae.cc/#yomi@ja,schema:category@ja,https://sabae.cc/#format@ja,schema:description@ja,https://sabae.cc/#yomi@en,schema:category@en,https://sabae.cc/#format@en,schema:description@en
 schema:DefiedTerm,1,LED,,LED 1,,エル・イー・ディー,入出力,LED 数,数が1ならLEDが光り、0なら消える,LED,I/O,LED num,"light on the LED when n equals 1, light off when n equals 0"
 schema:DefiedTerm,2,WAIT,,WAIT 60,,ウェイト,プログラム,"WAIT 数1{,数2}",数1の数だけ待つ（60で１秒）。マイナスの数を指定すると走査線分で待つ(-261でWAIT1と同じ時間)。省略できる数2に0を指定すると画面表示を止め低電力化して待つ。,wait,Program,"WAIT num{,num2}","wait n frames (60frame = 1sec) (if num2 eqauls 0 low power consumption mode, if num1 is minus short wait mode -261 same as WAIT1)"

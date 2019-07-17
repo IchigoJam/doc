@@ -1,6 +1,6 @@
 # IchigoJam-doc apps
 
-[IchigoJam BASIC 1.4 コマンド一覧][https://fukuno.jig.jp/app/csv/ichigojam-cmd.html]  
+[IchigoJam BASIC 1.4 コマンド一覧](https://fukuno.jig.jp/app/csv/ichigojam-cmd.html)  
 
 [IchigoJam BASIC 1.4 command list (English)][https://fukuno.jig.jp/app/csv/ichigojam-cmd.html#lang=en]  
 

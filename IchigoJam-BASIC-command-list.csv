@@ -105,7 +105,7 @@ schema:DefiedTerm,102,RENUM,,RENUM,,リナンバー,プログラム,"RENUM {数1
 schema:DefiedTerm,103,LRUN,,LRUN 1,,ロードラン,ファイル,LRUN {数},プログラムを読み込み後、実行する,load and run,File,LRUN {num},LOAD num and RUN
 schema:DefiedTerm,104,FILE,,?FILE(),,ファイル,ファイル,FILE(),最後にプログラムを読み込み、書き込み行った数を返す,file,File,FILE(),return the number of last using FILE
 schema:DefiedTerm,105,LINE,,?LINE(),,ライン,プログラム,LINE(),現在実行中の行番号を返す（非実行時は0）,line,Program,LINE(),return the line number of last execution
-schema:DefiedTerm,106,SRND,,SRND 0,,エス・ランダム,プログラム,SRND 数,種を指定して乱数を初期化する,S random,Program,SRND num,initialize the seed of random/td>
+schema:DefiedTerm,106,SRND,,SRND 0,,エス・ランダム,プログラム,SRND 数,種を指定して乱数を初期化する,S random,Program,SRND num,initialize the seed of random
 schema:DefiedTerm,107,HELP,,HELP,,ヘルプ,メモリ,HELP,メモリマップを表示する,help,Memory,HELP,display the memory map
 schema:DefiedTerm,108,PEEK,,?PEEK(#700),,ピーク,メモリ,PEEK(数),メモリ読み出し（キャラクターパターン0-#7FFなど）,peek,Memory,PEEK(num),read 1 byte number from the memory in address specified num2
 schema:DefiedTerm,109,POKE,,"POKE #700,#FF",,ポーク,メモリ,"POKE 数,数","メモリへの書き込み（連続書き込み可能 POKE#700,1,2,3）",poke,Memory,"POKE num1,num2",write 1 byte num1 specified to the memory in address specified num2

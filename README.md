@@ -15,3 +15,5 @@ IchigoJam BASIC 1.4 commnad list for printings
 [sorted by alphabet](https://fukuno.jig.jp/app/csv/ichigojam-cmd-paper.html#1en)  
 [sorted by category](https://fukuno.jig.jp/app/csv/ichigojam-cmd-paper.html#3en)  
 
+
+[IchigoJam BASIC 1.5β コマンド一覧](https://ichigojam.github.io/doc/IchigoJam-1.5.html)  

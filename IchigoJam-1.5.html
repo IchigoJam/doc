@@ -1,0 +1,168 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"/>
+<title>IchigoJam BASIC リファレンス ver 1.5β</title>
+</head>
+<style>
+body {
+	font-family: sans-serif;
+}
+table {
+	border-collapse: collapse;
+	font-size: 12px;
+	margin: 0.5em 0;
+	width: auto;
+}
+th, td {
+	background: white;
+	border: 1px solid gray;
+	padding: 0px 5px;
+	text-align: left;
+}
+h1 {
+	font-size: 24px;
+	padding: 0;
+	margin: 0;
+}
+.credit {
+	margin: .3em 0;
+	font-size: 12px;
+}
+a {
+	color: black !important;
+}
+</style>
+</head>
+<body>
+<h1>IchigoJam BASIC リファレンス ver 1.5β</h1>
+
+<table>
+<tr><th>コマンド</th><th>解説</th><th>例</th></tr>
+<tr><td>LED 数 / エル・イー・ディー</td><td>数が1ならLEDが光り、0なら消える</td><td>LED 1</td><tr>
+<tr><td>WAIT 数1 / ウェイト</td><td>数1の数だけ待つ（60で１秒）。マイナスの数を指定すると走査線分で待つ(-261でWAIT1と同じ時間)</td><td>WAIT 60</td><tr>
+<tr><td>: / コロン</td><td>コマンドを後ろに続けて書くときの区切り記号</td><td>WAIT 60:LED 1</td><tr>
+<tr><td>KBD {数} / キーボード</td><td>キーボードレイアウトを変更し保存する（数、1:日本語キーボード、0:USキーボード）</td><td>KBD 0</td><tr>
+<tr><td>行番号 {コマンド} / ワン</td><td>1. 数は-32768から32767まで表記できる。 2. 行頭の1〜32767で指定された数は行番号として、コマンドと合わせて記録する。コマンドを省略するとその行を削除（16385以上は指定しないと表示しない）</td><td>10 LED1</td><tr>
+<tr><td>RUN / ラン</td><td>プログラムを実行する [F5]</td><td>RUN</td><tr>
+<tr><td>LIST {行番号1{,行番号2}} / リスト</td><td>プログラムを表示する [F4] （行番号1で1行表示、行番号1がマイナスでその行まで表示、行番号2指定でその行まで表示、行番号2が0の時終わりまで表示、ESCで途中停止）</td><td>LIST 10,300</td><tr>
+<tr><td>GOTO 行番号 / ゴートゥー</td><td>指定した行番号へ飛ぶ（式も指定可能）</td><td>GOTO 10</td><tr>
+<tr><td>END / エンド</td><td>プログラムを終了する</td><td>END</td><tr>
+<tr><td>IF 数 {THEN} コマンド1 {ELSE コマンド2} / イフ、ゼン、エルス</td><td>数が0でなければコマンド1を実行し、0であればコマンド2を実行する（THEN,ELSE以降は省略可、ただし16進数後は:で区切る必要あり）</td><td>IF BTN() END</td><tr>
+<tr><td>BTN({数}) / ボタン</td><td>ボタンが押されていれば1、そうでないとき0を返す（数：0(付属ボタン)/UP/DOWN/RIGHT/LEFT/SPACE/X(88)、省略で0、-1でビットパターンで返す）</td><td>LED BTN()</td><tr>
+<tr><td>NEW / ニュー</td><td>プログラムを全部消す</td><td>NEW</td><tr>
+<tr><td>PRINT {数や文字列} / プリント</td><td>数や文字列を表示する （文字列は"で囲む、";" で連結できる）</td><td>PRINT "HI!";15</td><tr>
+<tr><td>? {数や文字列} / クエスション</td><td>数や文字列を表示する （文字列は"で囲む、";" で連結できる）</td><td>?"HI!";15</td><tr>
+<tr><td>LOCATE 数1{,数2{,数3}} / ロケート</td><td>次に文字を書く位置を横、縦の順に指定する（左上が0,0、縦=-1で無表示）。数1のみでX+Y*幅。数3が0でなければ指定した場所にカーソルを表示する。</td><td>LOCATE 3,3</td><tr>
+<tr><td>LC 数1{,数2{,数3}} / ロケート</td><td>次に文字を書く位置を横、縦の順に指定する（左上が0,0、縦=-1で無表示）。数1のみでX+Y*幅。数3が0でなければ指定した場所にカーソルを表示する。</td><td>LC 3,3</td><tr>
+<tr><td>CLS / クリア・スクリーン</td><td>画面を全部消す</td><td>CLS</td><tr>
+<tr><td>RND(数) / ランダム</td><td>0から数未満のでたらめな整数を返す</td><td>PRINT RND(6)</td><tr>
+<tr><td>SAVE {数} / セーブ</td><td>プログラムを保存する（0〜14の15ファイル、省略で前回使用した数） ボタンを押した状態で起動するとファイル0を読み込み自動実行</td><td>SAVE 1</td><tr>
+<tr><td>LOAD {数} / ロード</td><td>プログラムを読み出す（0〜14の15ファイル、省略で前回使用した数）</td><td>LOAD</td><tr>
+<tr><td>FILES {数1{,数2}} / ファイルズ</td><td>数1(省略可)〜数2のプログラム一覧を表示する（ESCで途中停止）</td><td>FILES</td><tr>
+<tr><td>BEEP {数1{,数2}} / ビープ</td><td>単音を鳴らす 周期(0-32767)と長さ(1/60秒単位)は省略可</td><td>BEEP</td><tr>
+<tr><td>PLAY {"MML"} / プレイ</td><td>MML、記述した音楽を鳴らす。省略で音停止（MML、CDEFGAB：ドレミファソラシ、R：休符、.：音や休符を1.5倍伸ばす、T120：テンポ、O4：オクターブ(1-6)、N10：単音、&lt;：オクターブ上げる、&gt;：オクターブ下げる、$：繰り返し、'：以後鳴らさない）</td><td>PLAY "$CDE2CDE2"</td><tr>
+<tr><td>TEMPO 数 / テンポ</td><td>再生中の音楽のテンポを変更する</td><td>TEMPO 1200</td><tr>
+<tr><td>数 + 数 / プラス</td><td>足し算する</td><td>PRINT 1+1</td><tr>
+<tr><td>数 - 数 / マイナス</td><td>1. 引き算する 2. 後に続く数をマイナスにする</td><td>PRINT 2-1</td><tr>
+<tr><td>数 * 数 / アスタリスク</td><td>掛け算する</td><td>PRINT 7*8</td><tr>
+<tr><td>数 / 数 / スラッシュ</td><td>割り算する（小数点以下は切り捨て）</td><td>PRINT 9/3</td><tr>
+<tr><td>数 % 数 / パーセント</td><td>割り算した余りを返す</td><td>PRINT 10%3</td><tr>
+<tr><td>(式) / ブラケット</td><td>カッコ内の式を優先して計算する</td><td>PRINT 1+(1*2)</td><tr>
+<tr><td>LET 変数,数 / レット</td><td>数をアルファベット１文字の変数や配列の値として記憶する（配列へ連続代入可能 LET[0],1,2）</td><td>LET A,1</td><tr>
+<tr><td>変数=数 / イコール</td><td>1. 数をアルファベット１文字の変数や配列の値として記憶する。 2. 式として使うと==と同じ機能となる</td><td>A=1</td><tr>
+<tr><td>INPUT {文字列,}変数 / インプット</td><td>キーボードやUARTからの入力で数値を変数にいれる（文字列とコンマは省略可）</td><td>INPUT "ANS?",A</td><tr>
+<tr><td>TICK({数}) / ティック</td><td>CLTからの時間を返す（1/60秒で1進む） *数に1指定で1/(60*261)秒で1進む時間</td><td>PRINT TICK()</td><tr>
+<tr><td>CLT / クリア・ティック</td><td>TICK()のカウントをリセットする</td><td>CLT</td><tr>
+<tr><td>INKEY() / インキー</td><td>キーボードやUARTから１文字入力する（入力がない時は0、UARTから0が入力された時は#100）</td><td>PRINT INKEY()</td><tr>
+<tr><td>LEFT / レフト</td><td>28を返す。INKEYのキーコードの判定や、SCROLLに使う</td><td>IF INKEY()=LEFT LED1</td><tr>
+<tr><td>RIGHT / ライト</td><td>29を返す。INKEYのキーコードの判定や、SCROLLに使う</td><td>IF INKEY()=RIGHT LED1</td><tr>
+<tr><td>UP / アップ</td><td>30を返す。INKEYのキーコードの判定や、SCROLLに使う</td><td>IF INKEY()=UP LED1</td><tr>
+<tr><td>DOWN / ダウン</td><td>31を返す。INKEYのキーコードの判定や、SCROLLに使う</td><td>IF INKEY()=DOWN LED1</td><tr>
+<tr><td>SPACE / スペース</td><td>32を返す。INKEYのキーコードの判定や、SCROLLに使う</td><td>IF INKEY()=SPACE LED1</td><tr>
+<tr><td>CHR$(数{,数2{,数3…}}) / キャラクター</td><td>PRINT内で、文字コードに対応する文字を返す（コンマ区切りで連続表記可）</td><td>PRINT CHR$(65)</td><tr>
+<tr><td>ASC("文字") / アスキー</td><td>文字に対する文字コードを返す</td><td>PRINT ASC("A")</td><tr>
+<tr><td>SCROLL 数 / スクロール</td><td>指定した方向に1キャラ分スクロールする（0/UP:上、1/RIGHT:右、2/DOWN:下、3/LEFT:左）</td><td>SCROLL 2</td><tr>
+<tr><td>SCR({数,数}) / スクリーン</td><td>画面上の指定した位置に書かれた文字コードを返す（指定なしで現在位置）</td><td>PRINT SCR(0,0)</td><tr>
+<tr><td>数 == 数 / イコール・イコール</td><td>比較して等しい時に1、それ以外で0を返す。</td><td>IF A==B LED 1</td><tr>
+<tr><td>数 != 数 / ノット・イコール・トゥー</td><td>比較して等しくない時に1、それ以外で0を返す</td><td>IF A!=B LED 1</td><tr>
+<tr><td>数 &lt;&gt; 数 / レス・アンド・グレーター・ザン</td><td>比較して等しくない時に1、それ以外で0を返す</td><td>IF A&lt;&gt;B LED 1</td><tr>
+<tr><td>数 &lt;= 数 / レス・ザン・オア・イコール・トゥー</td><td>比較して以下の時に1、それ以外で0を返す</td><td>IF A&lt;=B LED 1</td><tr>
+<tr><td>数 &lt; 数 / レス・ザン</td><td>比較して未満の時に1、それ以外で0を返す</td><td>IF A&lt;B LED 1</td><tr>
+<tr><td>数 &gt;= 数 / グレーター・ザン・オア・イコール・トゥー</td><td>比較して以上の時に1、それ以外で0を返す</td><td>IF A&gt;=B LED 1</td><tr>
+<tr><td>数 &gt; 数 / グレーター・ザン</td><td>比較してより大きい時に1、それ以外で0を返す</td><td>IF A&gt;B LED 1</td><tr>
+<tr><td>式 AND 式 / アンド</td><td>どちらの式も1の時に1、それ以外で0を返す</td><td>IF A=1 AND B=1 LED 1</td><tr>
+<tr><td>式 &amp;&amp; 式 / アンド</td><td>どちらの式も1の時に1、それ以外で0を返す</td><td>IF A=1 &amp;&amp; B=1 LED 1</td><tr>
+<tr><td>式 OR 式 / オア</td><td>どちらかの式が1の時に1、それ以外で0を返す</td><td>IF A=1 OR B=1 LED 1</td><tr>
+<tr><td>式 || 式 / オア</td><td>どちらかの式が1の時に1、それ以外で0を返す</td><td>IF A=1 || B=1 LED 1</td><tr>
+<tr><td>NOT 式 / ノット</td><td>式が0の時に1、それ以外で0を返す</td><td>IF NOT A=1 LED 1</td><tr>
+<tr><td>! 式 / ノット</td><td>式が0の時に1、それ以外で0を返す</td><td>IF !(A=1) LED 1</td><tr>
+<tr><td>REM / リマーク</td><td>これ以降のコマンドを実行しない（コメント機能）</td><td>REM START</td><tr>
+<tr><td>' / シングル・クォート</td><td>これ以降のコマンドを実行しない（コメント機能）</td><td> START</td><tr>
+<tr><td>FOR 変数=数1 TO 数2 {STEP 数3}:コマンド:NEXT / フォー、トゥー、ステップ、ネクスト</td><td>変数に数1をいれ、数2になるまで数3ずつ増やしながらNEXTまでをくりかえす （STEPは省略可、6段まで）</td><td>FOR I=0 TO 10:?I:NEXT</td><tr>
+<tr><td>POS({数}) / ポジション</td><td>カーソル位置を返す（数、省略時または0:X+Y*幅、1:X座標、2:Y座標）</td><td>?POS(0),POS(1)</td><tr>
+<tr><td>DRAW 数1,数2{,数3,数4}{,数5} / ドロー</td><td>数1,数2の座標から数3,数4の座標へ線を引く（座標は最大63x47）、数5に0指定で線を消し、2指定で反転する、省略時または1指定で線を引く</td><td>DRAW 1,5,10,15</td><tr>
+<tr><td>POINT(数1,数2) / ポイント</td><td>数1,数2の座標にDRAWで描かれた点または文字があるときに1、そうでないとき0を返す</td><td>?POINT(1,5)</td><tr>
+<tr><td>OUT 数1{,数2} / アウト</td><td>外部出力OUT1-7に0または1を出力する 数2を省略でまとめて出力できる</td><td>OUT 1,1</td><tr>
+<tr><td>IN({数}) / イン</td><td>IN1-4から入力する（0または1） 数を省略でまとめて入力できる（入力はプルアップされている、ボタンはIN9）</td><td>LET A,IN(1)</td><tr>
+<tr><td>ANA({数}) / アナログ</td><td>IN1-4の外部入力の電圧(0V-3.3V)を0-1023の数値で返す（省略または9指定でボタン)</td><td>?ANA()</td><tr>
+<tr><td>PWM 数1,数2 / ピー・ダブリュー・エム</td><td>外部出力OUT1-6に数2で0.01msec単位で指定するパルスを出力する（0-2000、周期20msec）</td><td>PWM 2,100</td><tr>
+<tr><td>CLV / クリア・バリアブル</td><td>変数、配列を全部0にする</td><td>CLV</td><tr>
+<tr><td>CLEAR / クリア</td><td>変数、配列を全部0にする</td><td>CLEAR</td><tr>
+<tr><td>CLK / クリア・キー</td><td>キーバッファとキーの状態をクリアする</td><td>CLK</td><tr>
+<tr><td>CLO / クリア・アウトプット</td><td>入出力ピンを初期状態に戻す</td><td>CLO</td><tr>
+<tr><td>ABS(数) / アブソリュート</td><td>絶対値を返す（マイナスはプラスになる）</td><td>?ABS(-2)</td><tr>
+<tr><td>[数] / アレイ</td><td>配列（[0]から[101]までの102コの連続した変数として使える） LET[0],1,2,3で連続代入可能</td><td>[3]=1</td><tr>
+<tr><td>GOSUB 行番号 / ゴーサブ</td><td>戻り先をスタックに積み、数または式で指定した行番号に飛ぶ（ネストは30段まで）</td><td>GOSUB 100</td><tr>
+<tr><td>GSB 行番号 / ゴーサブ</td><td>戻り先をスタックに積み、数または式で指定した行番号に飛ぶ（ネストは30段まで）</td><td>GSB 100</td><tr>
+<tr><td>RETURN / リターン</td><td>GOSUB/GSBの呼び出し元へ戻る</td><td>RETURN</td><tr>
+<tr><td>RTN / リターン</td><td>GOSUB/GSBの呼び出し元へ戻る</td><td>RTN</td><tr>
+<tr><td>DEC$(数1{,数2}) / デシ</td><td>PRINT内で、数を文字列にする（２番目の数は桁数、省略可）</td><td>?DEC$(99,3)</td><tr>
+<tr><td>#16進数 / ハッシュ</td><td>16進数で数を表記する *この後THENを省略しA〜Fで始まるコマンドを使う場合 : で区切る</td><td>#FF</td><tr>
+<tr><td>HEX$(数1{,数2}) / ヘックス</td><td>PRINT内で、数を16進数の文字列にする（２番目の数は桁数、省略可）</td><td>?HEX$(255,2)</td><tr>
+<tr><td>`2進数 / バック・クォート</td><td>2進数で数を表記する</td><td>`1010</td><tr>
+<tr><td>BIN$(数1{,数2}) / バイナリー</td><td>PRINT内で、数を2進数の文字列にする（２番目の数は桁数、省略可）</td><td>?BIN$(255,8)</td><tr>
+<tr><td>数 &amp; 数 / アンパサンド</td><td>論理積（ビット演算）</td><td>?3&amp;1</td><tr>
+<tr><td>数 | 数 / パイプ</td><td>論理和（ビット演算）</td><td>?3|1</td><tr>
+<tr><td>数 ^ 数 / ハット</td><td>排他的論理和（ビット演算）</td><td>?A^1</td><tr>
+<tr><td>数 &gt;&gt; 数 / シフト・ライト</td><td>右シフトする（ビット演算）</td><td>?A&gt;&gt;1</td><tr>
+<tr><td>数 &lt;&lt; 数 / シフト・レフト</td><td>左シフトする（ビット演算）</td><td>?A&lt;&lt;1</td><tr>
+<tr><td>~数 / チルダ</td><td>ビット反転（ビット演算）</td><td>?~A</td><tr>
+<tr><td>COS(数) / コサイン</td><td>指定された数を角度の度数としてコサインの値の256倍を返す</td><td>?COS(90)</td><tr>
+<tr><td>SIN(数) / サイン</td><td>指定された数を角度の度数としてサインの値の256倍を返す</td><td>?SIN(90)</td><tr>
+<tr><td>STOP / ストップ</td><td>プログラムを中断する</td><td>STOP</td><tr>
+<tr><td>CONT / コンティニュー</td><td>実行中の行や、中断した行を再度実行する</td><td>CONT</td><tr>
+<tr><td>SOUND() / サウンド</td><td>音が再生中なら1、そうで無いとき0をを返す</td><td>?SOUND()</td><tr>
+<tr><td>FREE() / フリー</td><td>プログラムの残りメモリ数を返す（最大1024byte）</td><td>?FREE()</td><tr>
+<tr><td>VER({数}) / バージョン</td><td>IchigoJam BASICのバージョン番号を返す</td><td>?VER()</td><tr>
+<tr><td>RENUM {数1{,数2}} / リナンバー</td><td>プログラムの行番号を数1(省略時は10)から数2(省略時は10)刻みにする。GOTO/GOSUBの飛び先は手で変更必要な場合がある</td><td>RENUM</td><tr>
+<tr><td>LRUN {数1{,数2}} / ロードラン</td><td>ファイル数1のプログラムを読み込み後、実行する(数2が指定されていたらその行へGOTO)</td><td>LRUN 1</td><tr>
+<tr><td>FILE() / ファイル</td><td>最後にプログラムを読み込み、書き込み行った数を返す</td><td>?FILE()</td><tr>
+<tr><td>LINE() / ライン</td><td>現在実行中の行番号を返す（非実行時は0）</td><td>?LINE()</td><tr>
+<tr><td>SRND 数 / エス・ランダム</td><td>種を指定して乱数を初期化する</td><td>SRND 0</td><tr>
+<tr><td>HELP / ヘルプ</td><td>メモリマップを表示する</td><td>HELP</td><tr>
+<tr><td>PEEK(数) / ピーク</td><td>メモリ読み出し（キャラクターパターン0-#7FFなど）</td><td>?PEEK(#700)</td><tr>
+<tr><td>POKE 数,数 / ポーク</td><td>メモリへの書き込み（連続書き込み可能 POKE#700,1,2,3）</td><td>POKE #700,#FF</td><tr>
+<tr><td>COPY 数1,数2,数3 / コピー</td><td>メモリコピー 数1のアドレスへ数2のアドレスから数3の長さ分コピー(数3マイナスでコピー方向が逆になる)</td><td>COPY #900,0,256</td><tr>
+<tr><td>CLP / クリア・パターン</td><td>キャラクターパターン(#700-#7FF)を初期化する</td><td>CLP</td><tr>
+<tr><td>"文字列" / ダブル・クォート</td><td>文字列の先頭アドレスを返す</td><td>A="ABC"</td><tr>
+<tr><td>STR$(数1{,数2}) / ストリング</td><td>PRINT内で、文字列を返す（数2(省略可)で長さ指定）</td><td>PRINT STR$(A)</td><tr>
+<tr><td>LEN("文字列") / レングス</td><td>文字列の長さを返す</td><td>PRINT LEN("ABC")</td><tr>
+<tr><td>@ラベル / アット・マーク</td><td>行の先頭に書くとラベルとなり、行番号の代わりとして使える（GOTO @LOOPなど） ※前方一致</td><td>@LOOP</td><tr>
+<tr><td>VIDEO 数1 / ビデオ</td><td>画面表示非表示を切り替える 0で画面表示を停止し処理高速化 （F8で表示）、数1が2の倍数で白黒反転、数1が3以上で拡大モード</td><td>VIDEO 0</td><tr>
+<tr><td>RESET / リセット</td><td>IchigoJamをリセットする</td><td>RESET</td><tr>
+<!--<tr><td>SLEEP / スリープ</td><td>プログラムを休止する (ボタンを押すと起動し、LRUN0を実行する)</td><td>SLEEP</td><tr>-->
+<tr><td>UART 数1{,数2} / ユー・アート</td><td>数1：シリアル出力設定（0:オフ、1:PRINTのみ、2:PRINT/LC/CLS/SCROLL、3:PRINTのみ/改行コード\r\n、+4で入力エコーバック、+8で画面表示OFF、初期値:2）、数2：シリアル受信設定（0:オフ、1:オン、+2:ESC無効、+4:CR変換(13→10) 省略時1）</td><td>UART 0</td><tr>
+<tr><td>BPS 数1{,数2} / ビー・ピー・エス</td><td>シリアル通信速度を変更する(0で初期値の115,200bps、-1:57600bps、-2:38400bps、-100以下指定で指定した数の-100倍bpsに指定、-2304:230400bps)。数2でI2Cの通信速度設定（単位kHz、0:デフォルト400kHz)</td><td>BPS 9600</td><tr>
+<tr><td>OK {数} / オーケー</td><td>OKやエラーメッセージの表示有無を切り替える（数、1:表示、2:非表示、省略で1）</td><td>OK 2</td><tr>
+<tr><td>I2CR(数1,数2,数3,数4,数5) / アイ・ツー・シー・リード</td><td>I2Cで周辺機器から読み込む I2Cアドレス、コマンド送信アドレス・長さ、受信アドレスと長さ（コマンド送信が1byteの時数3を省略可、コマンド送信が0byteの時数2/数3を省略可）</td><td>R=I2CR(#50,#114A,2,#114C,2)</td><tr>
+<tr><td>I2CW(数1,数2,数3,数4,数5) / アイ・ツー・シー・ライト</td><td>I2Cで周辺機器に書き込む I2Cアドレス、コマンド送信アドレス・長さ、送信アドレスと長さ（数4/数5は省略可、コマンド送信が1byteの時数3を省略可）</td><td>R=I2CW(#50,#114A,2,#114C,2)</td><tr>
+<!--
+<tr><td>IoT.IN() / アイ・オー・ティー・イン</td><td>sakura.ioモジュールから受信した数を一つ読み込む</td><td>R=IoT.IN()</td><tr>
+<tr><td>IoT.OUT 数 / アイ・オー・ティー・アウト</td><td>sakura.ioモジュールへ数をチャンネル0で即時送信する</td><td>IoT.OUT 100</td><tr>
+<tr><td>WS.LED 数1{,数2} / ダブリュー・エス・エル・イー・ディー</td><td>配列の先頭から緑赤青の順に設定された値でLEDに接続されたWS2812Bを数1の分光らせる。数2を指定するとその数だけ繰り返す。</td><td>WS.LED 3</td><tr>
+<tr><td>SWITCH {数1{,数2}} / スイッチ</td><td>画面表示をテレビと液晶とを切り替える（数1 0:テレビ、1:液晶）、数2で液晶の濃さを指定</td><td>SWITCH</td><tr>
+-->
+<tr><td>USR(数1{,数2}) / ユーザー</td><td>数1で指定されたアドレスのマシン語(RISC-V)を数2をパラメータとして呼び出す（数2省略で0）</td><td>A=USR(#700,0)</td><tr>
+</table>
+							
+<div class=credit>CC BY <a href=https://ichigojam.net/>IchigoJam</a><!--（DATA: <a href=https://github.com/ichigojam/doc/>https://github.com/ichigojam/doc/</a>）</div>-->
+</body>
+</html>

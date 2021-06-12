@@ -21,7 +21,7 @@
 
 ## pins - ピン機能
 
-|name|in|out|IchigoJam 1.4|IchigoJam 1.5|
+|name|in_n|out_n|IchigoJam 1.4|IchigoJam 1.5|
 |-|-|-|-|-|
 |IN1|1|8||ANA|
 |IN2|2|9|ANA、プルアップ不可|ANA, DAC対応|
@@ -36,6 +36,9 @@
 |OUT5|10|5|PWM対応|ANA*, PWM対応|
 |OUT6|11|6||PWM対応|
 
-- ANA* = 対応予定
-- 入力プルアップ設定 OUT n,-2 (入力プルアップなし設定 OUT n,-1)
+- ANA ANA(in_n) (BTNのアナログ入力は ANA()、ANA* = 対応予定)
+- 入力プルアップ設定 OUT out_n,-2 (入力プルアップなし設定 OUT out_n,-1)
+- DAC out_n,val (val: 0-4096)
+- PWM out_n,val (val: 0-2000、IchigoJam 1.4では第三パラメータで周期変更可能）
+- 
 

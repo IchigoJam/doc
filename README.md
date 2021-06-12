@@ -29,9 +29,9 @@
 |IN4|4|11|||
 |BTN|9||||
 |LED||7|||
-|OUT1|1|5||PWM対応|
-|OUT2|2|6|PWM対応|PWM対応|
-|OUT3|3|7|PWM対応|PWM対応|
-|OUT4|4|8|PWM対応|PWM対応|
-|OUT5|5|10|PWM対応|PWM対応|
-|OUT6|6|11||PWM対応|
+|OUT1|5|1||PWM対応|
+|OUT2|6|2|PWM対応|PWM対応|
+|OUT3|7|3|PWM対応|PWM対応|
+|OUT4|8|4|PWM対応|PWM対応|
+|OUT5|10|5|PWM対応|PWM対応|
+|OUT6|11|6||PWM対応|

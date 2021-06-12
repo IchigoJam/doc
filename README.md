@@ -21,11 +21,11 @@
 
 ## pins - ピン機能
 
-|name|in|out|1.4|1.5|
+|name|in|out|IchigoJam 1.4|IchigoJam 1.5|
 |-|-|-|-|-|
 |IN1|1|8|||
 |IN2|2|9|プルアップ不可|DAC対応|
-|IN3|3|10|プルアップ不可,I2C併用|DAC対応|
+|IN3|3|10|プルアップ不可、I2C併用|DAC対応|
 |IN4|4|11|||
 |BTN|9||||
 |LED||7|||

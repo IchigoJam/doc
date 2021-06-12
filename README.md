@@ -21,7 +21,7 @@
 
 ## IchigoJam pins - IchigoJamピン機能
 
-|name|in_n|out_n|IchigoJam 1.4|IchigoJam 1.5|
+|label|in_n|out_n|IchigoJam 1.4|IchigoJam 1.5|
 |-|-|-|-|-|
 |IN1|1|8||ANA|
 |IN2|2|9|ANA、プルアップ不可|ANA, DAC対応|

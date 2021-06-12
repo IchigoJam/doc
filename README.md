@@ -22,16 +22,16 @@
 ## pins - ピン機能
 
 |name|in|out|IchigoJam 1.4|IchigoJam 1.5|
-|-|-|-|-|-|
-|IN1|1|8|||
-|IN2|2|9|プルアップ不可|DAC対応|
-|IN3|3|10|プルアップ不可、I2C併用|DAC対応|
-|IN4|4|11|||
-|BTN|9||||
+|-|-|-|-|-|-|
+|IN1|1|8||ANA|
+|IN2|2|9|ANA、プルアップ不可|ANA, DAC対応|
+|IN3|3|10|プルアップ不可、I2C併用|ANA, DAC対応|
+|IN4|4|11||ANA|
+|BTN|9||ANA||
 |LED||7|||
-|OUT1|5|1||PWM対応|
-|OUT2|6|2|PWM対応|PWM対応|
-|OUT3|7|3|PWM対応|PWM対応|
-|OUT4|8|4|PWM対応|PWM対応|
+|OUT1|5|1|ANA|PWM対応|
+|OUT2|6|2|ANA, PWM対応|PWM対応|
+|OUT3|7|3|ANA, PWM対応|PWM対応|
+|OUT4|8|4|ANA, PWM対応|PWM対応|
 |OUT5|10|5|PWM対応|PWM対応|
 |OUT6|11|6||PWM対応|

@@ -22,7 +22,7 @@
 ## pins - ピン機能
 
 |name|in|out|IchigoJam 1.4|IchigoJam 1.5|
-|-|-|-|-|-|-|
+|-|-|-|-|-|
 |IN1|1|8||ANA|
 |IN2|2|9|ANA、プルアップ不可|ANA, DAC対応|
 |IN3|3|10|プルアップ不可、I2C併用|ANA, DAC対応|

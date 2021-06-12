@@ -27,7 +27,7 @@
 |IN2|2|9|ANA、プルアップ不可|ANA, DAC対応|
 |IN3|3|10|プルアップ不可、I2C併用|ANA, DAC対応|
 |IN4|4|11||ANA|
-|BTN|9||ANA||
+|BTN|9||ANA|ANA|
 |LED||7|||
 |OUT1|5|1|ANA|PWM対応|
 |OUT2|6|2|ANA, PWM対応|PWM対応|

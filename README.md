@@ -33,7 +33,7 @@
 |OUT2|6|2|ANA, PWM対応|ANA*, PWM対応|
 |OUT3|7|3|ANA, PWM対応|ANA*, PWM対応|
 |OUT4|8|4|ANA, PWM対応|ANA*, PWM対応|
-|OUT5|10|5|PWM対応|PWM対応|
+|OUT5|10|5|PWM対応|ANA*, PWM対応|
 |OUT6|11|6||PWM対応|
 
 ANA* = 対応予定

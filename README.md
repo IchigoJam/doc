@@ -39,6 +39,6 @@
 - ANA ANA(in_n) (BTNのアナログ入力は ANA()、ANA* = 対応予定)
 - 入力プルアップ設定 OUT out_n,-2 (入力プルアップなし設定 OUT out_n,-1)
 - DAC out_n,val (val: 0-4096)
-- PWM out_n,val (val: 0-2000、IchigoJam 1.4では第三パラメータで周期変更可能）
-- 
+- PWM out_n,val (val: 0-2000、第三パラメータで周期変更可能 1.5でも対応予定）
+
 

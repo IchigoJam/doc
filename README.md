@@ -19,7 +19,7 @@
 
 - [IchigoJam BASIC 1.5β コマンド一覧](https://ichigojam.github.io/doc/IchigoJam-1.5.html)  
 
-## pins - ピン機能
+## IchigoJam pins - IchigoJamピン機能
 
 |name|in_n|out_n|IchigoJam 1.4|IchigoJam 1.5|
 |-|-|-|-|-|

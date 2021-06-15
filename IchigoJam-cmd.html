@@ -1,0 +1,468 @@
+
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>IchigoJam BASIC 1.4 コマンド一覧</title>
+<meta name="viewport" content="target-densitydpi=middle-dpi, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/><!-- default / black / black-translucent -->
+<meta name="format-detection" content="telephone=no"/>
+<link rel="apple-touch-icon" href="ichigojam-cmd.png"/>
+<meta property="og:image" content="ichigojam-cmd.png">
+<script src="https://fukuno.jig.jp/fukuno.js"></script>
+<script type="module">
+
+import { CSV } from "https://code4sabae.github.io/js/CSV.js";
+
+const URL_CSV = "https://ichigojam.github.io/doc/IchigoJam-BASIC-command-list.csv"
+
+window.onload = async () => {
+	let lang = getLanguage()
+	const hash = document.location.hash
+	if (hash.startsWith("#lang=")) {
+		lang = hash.substring(6)
+
+		h1.textContent = document.title = "IchigoJam BASIC 1.4 command list"
+		sortstd.textContent = "easy sort"
+		sortcate.textContent = "category sort"
+		sortalpha.textContent = "alphabet sort"
+		sortrnd.textContent = "randam sort"
+		ced.textContent = "Taisuke Fukuno - Create Every Day"
+		opendata.textContent = ""
+	}
+	/*
+	getCSV(URL_CSV, "utf-8", function(csvdata) {
+		csv = csvdata
+		show()
+		const aid = hash.length > 1 ? hash.substring(1) : null;
+		if (aid) {
+			const a = document.getElementById(aid);
+			if (a) {
+				window.scrollTo(0, a.offsetTop);
+			}
+		}
+	})
+	*/
+	let sorttype = 0 // 0:std, 1:alphabet, 2:random, 3:category
+	const show = function(selcategory) {
+		//dump(csv);
+		clear(index)
+		clear(main)
+		clear(category)
+		var clm = function(name) {
+			for (var i = 0; i < csv[0].length; i++) {
+				if (csv[0][i].trim() == name)
+					return i;
+			}
+//			alert("err:" + name);
+			return -1;
+		};
+		var bks = null;
+		var cno = clm("schema:identifier");
+		var cname = clm("schema:name");
+		var cyomi = clm("https://sabae.cc/#yomi@" + lang)
+		if (cyomi < 0)
+			cyomi = clm("schema:name@ja-Kana");
+		var cdesc = clm("schema:description@" + lang)
+		var cformat = clm("https://sabae.cc/#format@" + lang)
+		var cexample = clm("https://sabae.cc/#example")
+		var caname = clm("schema:alternateName")
+		var ccategory = clm("schema:category@" + lang)
+		var cpriority = clm("https://sabae.cc/#priority")
+
+		let csv2 = []
+		let csvsorted = []
+		let cate = {}
+		for (let i = 1; i < csv.length; i++) {
+			csv2.push(csv[i])
+			csvsorted.push(csv[i])
+			const c = csv[i][ccategory]
+			if (!cate[c])
+				cate[c] = 0
+			cate[c]++
+		}
+		let cate2 = []
+		for (let c in cate) {
+			cate2.push([ c, cate[c] ])
+		}
+		cate2.sort(function(a, b) {
+			return b[1] - a[1]
+		})
+		let cate3 = {}
+		for (let i = 0; i < cate2.length; i++) {
+			const c = create("span")
+			c.className = "category"
+			c.textContent = cate2[i][0]
+			category.appendChild(c)
+			c.onclick = function() {
+				sorttype = 3
+				show(this.textContent)
+			}
+			cate3[cate2[i][0]] = i
+		}
+		//dump(cate2)
+
+		const sf = function(s) {
+			const c = s.charCodeAt(0)
+			if (c >= "A".charCodeAt(0) && c <= "Z".charCodeAt(0))
+				return s
+			return "~" + s
+		}
+		csvsorted.sort(function(a, b) {
+			let as = sf(a[cname])
+			let bs = sf(b[cname])
+			if (as < bs)
+				return -1
+			if (as > bs)
+				return 1
+			return 0
+		})
+
+		//	sort
+		if (sorttype == 1) {
+			csv2 = csvsorted
+		} else if (sorttype == 2) {
+			shuffle(csv2)
+		} else if (sorttype == 3) {
+			csv2.sort(function(a, b) {
+				const ac = cate3[a[ccategory]]
+				const bc = cate3[b[ccategory]]
+				if (ac < bc)
+					return -1
+				if (ac > bc)
+					return 1
+
+				const ap = a[cpriority]
+				const bp = b[cpriority]
+				if (ap > 0 && bp > 0) {
+					if (ap < bp)
+						return -1
+					if (ap > bp)
+						return 1
+					return 0
+				}
+
+				let as = parseInt(a[cno]) // sf(a[cname])
+				let bs = parseInt(b[cno]) // sf(b[cname])
+				if (as < bs)
+					return -1
+				if (as > bs)
+					return 1
+				return 0
+			})
+		}
+
+		let idx = get("index");
+		for (let i = 0; i < csvsorted.length; i++) {
+			const span = create("span")
+			const name = csvsorted[i][cname]
+			span.innerHTML = "<a href=" + (name.charAt(0) == ">" || name.charAt(0) == "<" ? '"#' + name + '"' : "#" + name) + ">" + name + "</a>"
+			idx.appendChild(span)
+		}
+
+		var c = get("main")
+
+		let curcate = null
+		for (var i = 0; i < csv2.length; i++) {
+			var item = csv2[i];
+			
+			var span = create("span");
+			span.className = "name"
+			var name = item[cname];
+			var yomi = item[cyomi];
+			//var s = item[cno] + ". " + makeRuby(name, yomi);
+			let s = makeRuby(name + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", yomi)
+			let cate = item[ccategory]
+			if (cate != curcate) {
+				curcate = cate
+			}
+			s += "<span class=namecate>[" + cate + "]</span>"
+			/*
+			var link = item[cweb].trim();
+			if (link) {
+				s = "<a href=" + link + ">" + s + "</a>";
+			}
+			*/
+			span.innerHTML = s;
+			let td = create("div")
+			c.appendChild(td)
+
+			const aname = create("a")
+			aname.id = name
+			td.appendChild(aname);
+			const aname2 = create("a")
+			aname2.id = encodeURIComponent(cate);
+			td.appendChild(aname2);
+
+			const alink2 = create("a");
+			alink2.href = "#" + name;
+			alink2.appendChild(span);
+			//td.appendChild(span);
+			td.appendChild(alink2);
+
+			const example = create("span")
+			example.textContent = item[cexample]
+			example.className = "example"
+			td.appendChild(example)
+
+			const format = create("span")
+			format.textContent = (lang == "ja" ? "書式：" : "Format: ") + item[cformat]
+			format.className = "format"
+			td.appendChild(format)
+
+			const pri = item[cpriority]
+			if (pri > 0) {
+				const spri = create("span")
+				spri.textContent = (lang == "ja" ? "優先順位：" : "Priority: ") + pri
+				spri.className = "priority"
+				td.appendChild(spri)
+			}
+
+			const altname = item[caname]
+			if (altname.length > 0) {
+				const saname = create("span")
+				saname.textContent = (lang == "ja" ? "別名：" : "Alias: ") + altname
+				saname.className = "aname"
+				td.appendChild(saname)
+			}
+
+			const des = create("div")
+			des.textContent = item[cdesc]
+			des.className = "description"
+			td.appendChild(des)
+
+
+			const gotop = create("div")
+			const alink = create("a")
+			alink.href = "#index"
+			gotop.textContent = "TOP↑"
+			alink.appendChild(gotop)
+			gotop.className = "gotop"
+			td.appendChild(alink)
+			/*
+			const img = new Image()
+			img.src = item[cimg]
+			td.appendChild(img)
+			img.onclick = function() {
+				alert(this.text)
+			}
+			*/
+		}
+		//c.appendChild(tbl)
+		if (selcategory)
+			document.location.href = "#" + selcategory
+	}
+	sortstd.onclick = function() {
+		sorttype = 0
+		show()
+	}
+	sortalpha.onclick = function() {
+		sorttype = 1
+		show()
+	}
+	sortrnd.onclick = function() {
+		sorttype = 2
+		show()
+	}
+	sortcate.onclick = function() {
+		sorttype = 3
+		show()
+	}
+	//
+	const csv = CSV.toJSON(await CSV.fetch(URL_CSV));
+	console.log(csv);
+	show()
+	const aid = hash.length > 1 ? hash.substring(1) : null;
+	if (aid) {
+		const a = document.getElementById(aid);
+		if (a) {
+			window.scrollTo(0, a.offsetTop);
+		}
+	}
+};
+
+var getCSV = function(url, enc, callback) {
+	getRawJSON(url, enc, function(csv) {
+			callback(convertCSVtoArray(csv));
+	});
+};
+
+var makeRuby = function(name, yomi) {
+	var res = [];
+	var ss = name.split(" ");
+	var ssy = yomi.split(" ");
+	for (var i = 0; i < ss.length; i++) {
+		var s = ss[i];
+		if (ss[i] != ssy[i]) {
+			s = "<ruby>" + ss[i] + "<rt>" + ssy[i] + "</rt></ruby>";
+		}
+		res.push(s);
+	}
+	return res.join(" ");
+};
+
+</script>
+<style>
+body {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+}
+h1 {
+	font-size: 5vw;
+	white-space: nowrap;
+	text-align: center;
+	margin: 0 0 0 0;
+	padding: .2em 0em;
+	background-color: #e33;
+	color: white;
+}
+h2 {
+	display: block;
+	background-color: #eee;
+}
+table {
+	display: inline-block;
+}
+#index {
+	margin-top: 0.5em;
+}
+#index span {
+	display: inline-block;
+	padding: 0.2em;
+	font-size: 90%;
+	margin: 0.0em;
+	line-height: 1em;
+}
+#main {
+	margin-top: .5em;
+}
+#category {
+	text-align: center;
+	margin-top: 0.1em;
+}
+.category {
+	font-size: 85%;
+	padding: 0 0.25em;
+	text-decoration: underline;
+	color: gray;
+	cursor: pointer;
+}
+.namecate {
+	color: white !important;
+	float: right;
+	font-size: 70%;
+}
+.name {
+	letter-spacing: .1em;
+	display: block;
+	background-color: #e33;
+	padding: 0.9em 0.2em 0.3em 0.4em;
+	margin-top: .6em;
+	font-size: 120%;
+	color: white;
+}
+.format, .aname, .priority {
+	display: block;
+	padding-left: 1em;
+	letter-spacing: .1em;
+}
+.example {
+	letter-spacing: .1em;
+	display: inline-block;
+	margin-left: 1em;
+	padding: 0.2em 0.5em;
+	margin: 0.2em 0.2em 0.2em 1em;
+	background-color: black;
+	color: white;
+}
+.description {
+	display: block;
+	padding-top: 0.3em;
+	padding-left: 1em;
+}
+.gotop {
+	display: block;
+	padding: 0 0.2em;
+	text-align: right;
+	x-background-color: gray;
+	color: gray !important;
+}
+#main a {
+	text-decoration: none;
+}
+#src {
+	text-align: center;
+	margin: 20px 0px 10px 0px;
+	font-size: 90%;
+}
+#s {
+	display: block;
+	text-align: center;
+	font-size: 50%;
+}
+a {
+	color: gray !important;
+}
+.add {
+	margin-top: .6em;
+	text-align: center;
+}
+
+/* iOSデフォルトスタイルをリセット */
+input[type="submit"],
+input[type="button"] {
+  border-radius: 0;
+  -webkit-box-sizing: content-box;
+  -webkit-appearance: button;
+  appearance: button;
+  border: none;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+input[type="submit"]::-webkit-search-decoration,
+input[type="button"]::-webkit-search-decoration {
+  display: none;
+}
+input[type="submit"]::focus,
+input[type="button"]::focus {
+  outline-offset: -2px;
+}
+
+button {
+	padding: 0.2em 0.2em;
+	margin: .2em 0;
+	font-size: 85%;
+	margin-left: .3em;
+}
+.add {
+	line-height: 2em;
+}
+rt {
+	text-align: left;
+}
+#other {
+	margin-top: 0.5em;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+<h1 id=h1>IchigoJam BASIC 1.4 コマンド一覧</h1>
+<div id="index"></div>
+<div class=add><button id=sortstd>やさしい順</button><button id=sortcate>カテゴリ順</button><button id=sortalpha>ABC順</button><button id=sortrnd>RND順</button></div>
+<div id="category"></div>
+<div id="main"></div>
+
+<div id="other">
+<a target=_blank href=ichigojam-cmd.html>日本語</a> / <a target=_blank href=ichigojam-cmd-paper.html>印刷用<br>
+<a target=_blank href=ichigojam-cmd.html#lang=en>English</a> / <a target=_blank href=ichigojam-cmd-paper.html#0en>for printings</a><br>
+</div>
+
+<div id="src">
+DATA: <a href=http://github.com/ichigojam/doc/>IchigoJam BASIC command list</a> CC BY <a href=https://ichigojam.net/>https://ichigojam.net/</a><br>
+APP: CC BY <a href=https://fukuno.jig.jp/2528 id=ced>fukuno.jig.jp 一日一創</a><br>
+<br>
+<div id=opendata>データ、アプリ共に、自由に二次利用可能な<a href=http://www.soumu.go.jp/menu_seisaku/ictseisaku/ictriyou/opendata/>オープンデータ</a>です。</div>
+</div>
+
+</body>
+</html>

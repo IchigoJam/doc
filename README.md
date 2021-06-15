@@ -36,7 +36,7 @@
 |OUT5|10|5|PWM対応|ANA, PWM対応|
 |OUT6|11|6||ANA, PWM対応|
 
-- ANA ANA(in_n) (BTNのアナログ入力は ANA()、ANA* = 対応予定)
+- ANA ANA(in_n) (BTNのアナログ入力は ANA())
 - 入力プルアップ設定 OUT out_n,-2 (入力プルアップなし設定 OUT out_n,-1)
 - DAC out_n,val (val: 0-1023)
 - PWM out_n,val (val: 0-2000、第三パラメータで周期変更可能 1.5でも対応予定）

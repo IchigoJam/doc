@@ -60,7 +60,7 @@ schema:DefiedTerm,58,||,OR,IF A=1 || B=1 LED 1,8,オア,計算,式 || 式,どち
 schema:DefiedTerm,59,NOT,!,IF NOT A=1 LED 1,3,ノット,計算,NOT 式,式が0の時に1、それ以外で0を返す,not,Calc,NOT x,return 1 if x equals 0 else 0
 schema:DefiedTerm,60,!,NOT,IF !(A=1) LED 1,3,ノット,計算,! 式,式が0の時に1、それ以外で0を返す,not,Calc,! X,return 1 if x equals 0 else 0
 schema:DefiedTerm,61,REM,',REM START,,リマーク,プログラム,REM,これ以降のコマンドを実行しない（コメント機能）,remark,Program,REM,not execute after this command (comment)
-schema:DefiedTerm,62,',REM, START,,シングル・クォート,プログラム,',これ以降のコマンドを実行しない（コメント機能）,single quote,Program,',not execute after this command (comment)
+schema:DefiedTerm,62,',REM,"' START",,シングル・クォート,プログラム,',これ以降のコマンドを実行しない（コメント機能）,single quote,Program,',not execute after this command (comment)
 schema:DefiedTerm,63,FOR,,FOR I=0 TO 10:?I:NEXT,,フォー,プログラム,FOR 変数=数1 TO 数2 {STEP 数3}:コマンド:NEXT,変数に数1をいれ、数2になるまで数3ずつ増やしながらNEXTまでをくりかえす （STEPは省略可、6段まで）,for,Program,FOR var=num1 TO num2 {STEP num3} / NEXT,"set num1 to var, execute the loop to the NEXT until var reach num2 by step num3 (you can omit STEP, nest limit:6)"
 schema:DefiedTerm,64,TO,,FOR I=0 TO 10:?I:NEXT,,トゥー,プログラム,FOR 変数=数1 TO 数2 {STEP 数3}:コマンド:NEXT,変数に数1をいれ、数2になるまで数3ずつ増やしながらNEXTまでをくりかえす （STEP省略時は数3は1、6段まで）,to,Program,FOR var=num1 TO num2 {STEP num3} / NEXT,"set num1 to var, execute the loop to the NEXT until var reach num2 by step num3 (you can omit STEP, nest limit:6)"
 schema:DefiedTerm,65,STEP,,FOR I=0 TO 10:?I:NEXT,,ステップ,プログラム,FOR 変数=数1 TO 数2 STEP 数3:コマンド:NEXT,変数に数1をいれ、数2になるまで数3ずつ増やしながらNEXTまでをくりかえす （STEPは省略可、6段まで）,step,Program,FOR var=num1 TO num2 {STEP num3} / NEXT,"set num1 to var, execute the loop to the NEXT until var reach num2 by step num3 (you can omit STEP, nest limit:6)"

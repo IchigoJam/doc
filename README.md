@@ -15,9 +15,10 @@
 - [IchigoJam BASIC 1.4 commnad list - sorted by alphabet](https://fukuno.jig.jp/app/csv/ichigojam-cmd-paper.html#1en)  
 - [IchigoJam BASIC 1.4 commnad list - sorted by category](https://fukuno.jig.jp/app/csv/ichigojam-cmd-paper.html#3en)  
 
-## doc for IchigoJam 1.5β
+## doc for IchigoJam 1.5
 
-- [IchigoJam BASIC 1.5β コマンド一覧](https://ichigojam.github.io/doc/IchigoJam-1.5.html)  
+- [IchigoJam BASIC 1.5 コマンド一覧](https://ichigojam.github.io/doc/IchigoJam-1.5.html)  
+- [IchigoJam BASIC 1.5 コマンド一覧 CSVオープンデータ](https://ichigojam.github.io/doc/IchigoJam-BASIC-command-list.csv);
 
 ## IchigoJam pins - IchigoJamピン機能
 

@@ -1,6 +1,9 @@
 # IchigoJam doc
 
-## appdoc - アプリで見るドキュメント
+## doc - ドキュメント for IchigoJam 1.5
+
+- [IchigoJam BASIC 1.5 コマンド一覧](https://ichigojam.github.io/doc/IchigoJam-1.5.html)  
+- [IchigoJam BASIC 1.5 コマンド一覧 CSVオープンデータ](IchigoJam-BASIC-command-list.csv)
 
 - [IchigoJam BASIC 1.4 コマンド一覧](https://fukuno.jig.jp/app/csv/ichigojam-cmd.html)  
 - [IchigoJam BASIC 1.4 command list (English)](https://fukuno.jig.jp/app/csv/ichigojam-cmd.html#lang=en)  
@@ -14,11 +17,6 @@
 - [IchigoJam BASIC 1.4 commnad list - sorted by easy](https://fukuno.jig.jp/app/csv/ichigojam-cmd-paper.html#0en)  
 - [IchigoJam BASIC 1.4 commnad list - sorted by alphabet](https://fukuno.jig.jp/app/csv/ichigojam-cmd-paper.html#1en)  
 - [IchigoJam BASIC 1.4 commnad list - sorted by category](https://fukuno.jig.jp/app/csv/ichigojam-cmd-paper.html#3en)  
-
-## doc for IchigoJam 1.5
-
-- [IchigoJam BASIC 1.5 コマンド一覧](https://ichigojam.github.io/doc/IchigoJam-1.5.html)  
-- [IchigoJam BASIC 1.5 コマンド一覧 CSVオープンデータ](https://ichigojam.github.io/doc/IchigoJam-BASIC-command-list.csv);
 
 ## IchigoJam pins - IchigoJamピン機能
 
@@ -40,6 +38,4 @@
 - ANA ANA(in_n) (BTNのアナログ入力は ANA())
 - 入力プルアップ設定 OUT out_n,-2 (入力プルアップなし設定 OUT out_n,-1)
 - DAC out_n,val (val: 0-1023)
-- PWM out_n,val (val: 0-2000、第三パラメータで周期変更可能 1.5でも対応予定）
-
-
+- PWM out_n,val (val: 0-2000、第三パラメータで周期変更可能 1.5でも対応予定)
